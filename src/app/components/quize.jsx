@@ -53,6 +53,7 @@ const Quiz = () => {
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [answerStatus, setAnswerStatus] = useState(null);
+
   useEffect(() => {
     let timer;
     if (quizStarted && !quizFinished) {
@@ -80,17 +81,6 @@ const Quiz = () => {
     setQuizStarted(true);
   };
 
-  const handleAnswer = (answer) => {
-    if (!selectedAnswer) { 
-      const correct = questions[currentQuestionIndex].correctAnswer === answer;
-      if (correct) {
-        setScore((prevScore) => prevScore + 1);
-      }
-      setSelectedAnswer(answer);
-      setShowNextButton(true);
-    
-    }
-  };
   const handleAnswerChange = (answer) => {
     setSelectedAnswer(answer);
     setShowNextButton(true);
@@ -138,6 +128,7 @@ const Quiz = () => {
     layout="fill"
     objectFit="contain"
     className="object-cover"
+     priority={true}
   />
 </div>
 
