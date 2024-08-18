@@ -110,7 +110,7 @@ const Quiz = () => {
   };
 
   return (
-    <div className="flex flex-col items-start p-20 overflow-hidden min-w-screen bg-white rounded-lg shadow-lg w-full h-full min-h-screen mx-0 mt-0">
+    <div className="flex flex-col overflow-y-auto items-start p-20 overflow-hidden min-w-screen bg-white rounded-lg shadow-lg w-full h-full min-h-screen mx-0 mt-0 ">
       {!quizStarted ? (
         <button
           onClick={handleStartQuiz}
