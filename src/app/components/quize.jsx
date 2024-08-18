@@ -7,40 +7,40 @@ const questions = [
     id: 1,
     question: 'Solve the fruit puzzle?',
     image: '/sample.jpg', // Add the path to your image
-    options: ['500', '1000', '750', '500'],
-    correctAnswer: '750',
+    options: ['A. 500', 'B. 1000', 'C. 750', 'D. 500'],
+    correctAnswer: 'C. 750',
   },
   {
     id: 2,
     question: 'What is the capital of France?',
     image: '/1paris.jpg', // Add the path to your image
-    options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-    correctAnswer: 'Paris',
+    options: ['A. Berlin', 'B. Madrid', 'C. Paris', 'D. Rome'],
+    correctAnswer: 'C. Paris',
   },
   {
     id: 3,
     question: "Which artist painted the Mona Lisa?",
     image: '/monalisa.jpg', // Add the path to your image
-    options: [ "Pablo Picasso","Vincent van Gogh","Leonardo da Vinci","Claude Monet"],
-    correctAnswer: 'Leonardo da Vinci',
+    options: [ "A. Pablo Picasso","B. Vincent van Gogh","C. Leonardo da Vinci","D. Claude Monet"],
+    correctAnswer: 'C. Leonardo da Vinci',
   },  {
     id: 4,
     question: "Which gas is most abundant in Earth's atmosphere?",
     image: '/nitrogen.jpg', // Add the path to your image
-    options: [ "Oxygen","Carbon Dioxide","Nitrogen","Hydrogen"],
-    correctAnswer: 'Nitrogen',
+    options: [ "A. Oxygen","B. Carbon Dioxide","C. Nitrogen","D. Hydrogen"],
+    correctAnswer: 'C. Nitrogen',
   },  {
     id: 5,
     question: "What is the chemical symbol for water?",
     image: '/water.jpg', // Add the path to your image
-    options: [ "CO2","H2O","O2","NaCl"],
-    correctAnswer: 'H2O',
+    options: [ "A. CO2","B. H2O","C. O2","D. NaCl"],
+    correctAnswer: 'B. H2O',
   },  {
     id: 5,
     question: "Which planet is known as the Red Planet?",
     image: '/mars.jpg', // Add the path to your image
-    options: [ "Jupiter","Mars","Venus","Saturn"],
-    correctAnswer: 'Mars',
+    options: [ "A. Jupiter","B. Mars","C. Venus","D. Saturn"],
+    correctAnswer: 'B. Mars',
   },
 ];
 
@@ -106,22 +106,22 @@ const Quiz = () => {
     setScore(0);
     setTime({ minutes: 0, seconds: 0, milliseconds: 0 });
     setQuizFinished(false);
-    setQuizStarted(false);
+    setQuizStarted(true);
   };
 
   return (
-    <div className="flex flex-col items-start p-20 bg-white rounded-lg shadow-lg w-full h-screen mx-0 mt-0">
+    <div className="flex flex-col items-start p-20 overflow-hidden min-w-screen bg-white rounded-lg shadow-lg w-full h-full min-h-screen mx-0 mt-0">
       {!quizStarted ? (
         <button
           onClick={handleStartQuiz}
-          className="bg-purple-500 hover:bg-purple-600 text-white font-bold mt-60 mx-auto py-3 px-6 rounded transition-colors duration-300 text-2xl"
+          className="bg-purple-500 hover:bg-purple-600 text-white font-bold mt-60 mx-auto py-3 px-6 rounded transition-colors duration-300 text-xl md:text-2xl"
         >
           Start Quiz
         </button>
       ) : (
         <>
-          <div className="flex items-center mb-6 items-center">
-          <div className="relative w-[500px] h-[400px] overflow-hidden flex items-center justify-center mr-10 mb-0">
+          <div className="flex flex-col md:flex-row items-center mb-6 w-full">
+          <div className="relative w-full max-w-screen-md mx-auto h-60 md:h-80 overflow-hidden flex items-center justify-center mb-4 md:mb-0">
   <Image
     src={questions[currentQuestionIndex].image}
     alt="Question Image"
@@ -132,8 +132,8 @@ const Quiz = () => {
   />
 </div>
 
-            <div className="flex flex-col">
-              <h2 className="text-2xl font-semibold mb-4">{questions[currentQuestionIndex].question}</h2>
+            <div className="flex flex-col w-full md:w-1/2">
+              <h2 className="text-xl md:text-2xl font-semibold mb-4">{questions[currentQuestionIndex].question}</h2>
               {questions[currentQuestionIndex].options.map((option, index) => (
                <label
                key={index}
